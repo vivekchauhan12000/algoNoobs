@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
+//import { StaticImage } from "gatsby-plugin-image"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -24,14 +25,16 @@ const BlogIndex = ({ data, location }) => {
   }
 
   return (
+    <div style={{backgroundColor:"#0f3460",height:"100%"}}>
     <Layout location={location} title={siteTitle}>
       <Seo title="All posts" />
       <Bio />
+      
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
 
-          return (
+          return (<div style={{backgroundColor:"#0f3460",height:"100%"}}>
             <li key={post.fields.slug}>
               <article
                 className="post-list-item"
@@ -39,7 +42,7 @@ const BlogIndex = ({ data, location }) => {
                 itemType="http://schema.org/Article"
               >
                 <header>
-                  <h2>
+                  <h2 style={{color:"#e94560"}}>
                     <Link to={post.fields.slug} itemProp="url">
                       <span itemProp="headline">{title}</span>
                     </Link>
@@ -47,7 +50,7 @@ const BlogIndex = ({ data, location }) => {
                   <small>{post.frontmatter.date}</small>
                 </header>
                 <section>
-                  <p
+                  <p style={{color:"#ff449f"}}
                     dangerouslySetInnerHTML={{
                       __html: post.frontmatter.description || post.excerpt,
                     }}
@@ -56,10 +59,12 @@ const BlogIndex = ({ data, location }) => {
                 </section>
               </article>
             </li>
+            </div>
           )
         })}
       </ol>
     </Layout>
+    </div>
   )
 }
 

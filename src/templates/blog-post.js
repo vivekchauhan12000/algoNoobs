@@ -11,6 +11,7 @@ const BlogPostTemplate = ({ data, location }) => {
   const { previous, next } = data
 
   return (
+    <div style={{backgroundColor:"#0f3460",height:"100%"}}>
     <Layout location={location} title={siteTitle}>
       <Seo
         title={post.frontmatter.title}
@@ -22,13 +23,15 @@ const BlogPostTemplate = ({ data, location }) => {
         itemType="http://schema.org/Article"
       >
         <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
+          <h1 itemProp="headline" style={{color:"#e94560"}}>{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
         </header>
+        <div style={{color:"#fff"}}>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
+        </div>
         <hr />
         <footer>
           <Bio />
@@ -61,6 +64,7 @@ const BlogPostTemplate = ({ data, location }) => {
         </ul>
       </nav>
     </Layout>
+    </div>
   )
 }
 
